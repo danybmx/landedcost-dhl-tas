@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="urn:LandedCost" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="urn:LandedCost" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://common.service.dhl" xmlns:tns2="http://utility.dhl" xmlns:tns3="http://error.dhl" xmlns:tns4="http://www.dhl.com/xmlns/F.040601/customer"  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.2.1
+Built on October 25, 2005 (09:15:57 EDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://www.dhl.com/xmlns/F.040601/customer" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://error.dhl"/>
+   <import namespace="urn:LandedCost"/>
+   <import namespace="http://utility.dhl"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="LandedCostInput">
+    <sequence>
+     <element name="countryCode" nillable="true" type="xsd:string"/>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="domain" nillable="true" type="xsd:string"/>
+     <element name="exportProductCode" nillable="true" type="xsd:string"/>
+     <element name="insuranceCurrency" nillable="true" type="xsd:string"/>
+     <element name="insuranceValue" nillable="true" type="xsd:string"/>
+     <element name="measurementType" nillable="true" type="xsd:string"/>
+     <element name="priceCurrency" nillable="true" type="xsd:string"/>
+     <element name="priceValue" nillable="true" type="xsd:string"/>
+     <element name="productCode" nillable="true" type="xsd:string"/>
+     <element name="receiverCountry" nillable="true" type="xsd:string"/>
+     <element name="shipmentCurrency" nillable="true" type="xsd:string"/>
+     <element name="shipperCountry" nillable="true" type="xsd:string"/>
+     <element name="shipToState" nillable="true" type="xsd:string"/>
+     <element name="totalQuantity" nillable="true" type="xsd:string"/>
+     <element name="transportationCurrency" nillable="true" type="xsd:string"/>
+     <element name="transportationValue" nillable="true" type="xsd:string"/>
+     <element name="type" nillable="true" type="xsd:string"/>
+     <element name="unit" nillable="true" type="xsd:string"/>
+     <element name="value" nillable="true" type="xsd:string"/>
+     
+    </sequence>
+   </complexType>
+   <complexType name="FeeDetails">
+       <sequence>
+        <element name="conditions" nillable="true" type="xsd:string"/>
+        <element name="country" nillable="true" type="xsd:string"/>
+        <element name="currency" nillable="true" type="xsd:string"/>
+        <element name="domain" nillable="true" type="xsd:string"/>
+        <element name="feeAmount" nillable="true" type="xsd:string"/>
+        <element name="formula" nillable="true" type="xsd:string"/>
+        <element name="maximum" nillable="true" type="xsd:string"/>
+        <element name="minimum" nillable="true" type="xsd:string"/>
+        <element name="type" nillable="true" type="xsd:string"/>
+       </sequence>
+      </complexType>
+      <complexType name="FeeInfo">
+       <sequence>
+        <element name="fee" nillable="true" type="tns4:FeeDetails"/>
+        <element name="feeName" nillable="true" type="xsd:string"/>
+       </sequence>
+      </complexType>
+      <complexType name="LandedCostResponse">
+       <sequence>
+        <element name="feeInfo" nillable="true" type="impl:ArrayOf_tns1_FeeInfo"/>
+        <element name="input" nillable="true" type="tns4:LandedCostInput"/>
+        <element name="shipmentValue" nillable="true" type="xsd:string"/>
+        <element name="totalEstimatedFees" nillable="true" type="xsd:string"/>
+        <element name="totalLandedCost" nillable="true" type="xsd:string"/>
+       </sequence>
+   </complexType>
+         <complexType name="LandedCostResponseObject">
+          <sequence>
+           <element name="response" nillable="true" type="tns4:LandedCostResponse"/>
+           <element name="referenceID" nillable="true" type="xsd:string"/>
+      </sequence>
+   </complexType>
+           
+    <complexType name="ArrayOf_tns1_ProductDetails">
+        <complexContent>
+         <restriction base="soapenc:Array">
+          <attribute ref="soapenc:arrayType" wsdl:arrayType="tns4:ProductDetails[]"/>
+         </restriction>
+        </complexContent>
+    </complexType>
+    
+    <complexType name="LandedCostMultipleCommoditiesInput">
+    <sequence>
+     <element name="domain" nillable="true" type="xsd:string"/>
+     <element name="insuranceCurrency" nillable="true" type="xsd:string"/>
+     <element name="insuranceValue" nillable="true" type="xsd:string"/>
+     <element name="receiverCountry" nillable="true" type="xsd:string"/>
+     <element name="shipmentCurrency" nillable="true" type="xsd:string"/>
+     <element name="shipperCountry" nillable="true" type="xsd:string"/>
+     <element name="shipToState" nillable="true" type="xsd:string"/>
+     <element name="transportationCurrency" nillable="true" type="xsd:string"/>
+     <element name="transportationValue" nillable="true" type="xsd:string"/>
+     <element name="type" nillable="true" type="xsd:string"/>
+     <element name="productInfo" nillable="false" type="tns4:ArrayOf_tns1_ProductDetails"/>
+    </sequence>
+   </complexType>
+   
+   <complexType name="ProductDetails">
+    <sequence>
+     <element name="countryCode" nillable="true" type="xsd:string"/>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="exportProductCode" nillable="true" type="xsd:string"/>
+     <element name="measurementType" nillable="true" type="xsd:string"/>
+     <element name="priceCurrency" nillable="true" type="xsd:string"/>
+     <element name="priceValue" nillable="true" type="xsd:string"/>
+     <element name="productCode" nillable="true" type="xsd:string"/>
+     <element name="totalQuantity" nillable="true" type="xsd:string"/>
+     <element name="unit" nillable="true" type="xsd:string"/>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+    
+   
+   <complexType name="ProductFeeInfo">
+     <sequence>
+      <element name="product" nillable="true" type="tns4:ProductDetails"/>
+      <element name="feeInfo" nillable="true" type="impl:ArrayOf_tns1_FeeInfo"/>
+     </sequence>
+   </complexType>
+   
+   <complexType name="LandedCostMultipleCommoditiesResponse">
+       <sequence>
+        <element name="productFeeInfo" nillable="true" type="impl:ArrayOf_tns1_ProductFeeInfo"/>
+        <element name="input" nillable="true" type="tns4:LandedCostInput"/>
+        <element name="shipmentValue" nillable="true" type="xsd:string"/>
+        <element name="totalEstimatedFees" nillable="true" type="xsd:string"/>
+        <element name="totalLandedCost" nillable="true" type="xsd:string"/>
+        <element name="feeInfo" nillable="true" type="impl:ArrayOf_tns1_FeeInfo"/>
+       </sequence>
+   </complexType>
+   <complexType name="LandedCostMultipleCommoditiesResponseObject">
+      <sequence>
+        <element name="response" nillable="true" type="tns4:LandedCostMultipleCommoditiesResponse"/>
+        <element name="referenceID" nillable="true" type="xsd:string"/>
+      </sequence>
+   </complexType>
+   
+   <complexType name="FactsServiceException">
+    <complexContent>
+     <extension base="tns2:NestedException">
+      <sequence>
+       <element name="statusCode" nillable="true" type="tns3:StatusCode_Base"/>
+       <element name="statusMessage" nillable="true" type="xsd:string"/>
+       <element name="statusParams" nillable="true" type="impl:ArrayOf_xsd_string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://utility.dhl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://error.dhl"/>
+   <import namespace="urn:LandedCost"/>
+   <import namespace="http://common.service.dhl"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType abstract="true" name="NestedException">
+    <sequence>
+     <element name="nestedTrace" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://error.dhl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="urn:LandedCost"/>
+  
+   <import namespace="http://utility.dhl"/>
+   <import namespace="http://common.service.dhl"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="StatusCode_Base">
+    <sequence>
+     <element name="code" type="xsd:int"/>
+     <element name="paramCount" type="xsd:int"/>
+     <element name="pattern" nillable="true" type="xsd:string"/>
+     <element name="type" nillable="true" type="xsd:anyType"/>
+     <element name="visibility" nillable="true" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="urn:LandedCost" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://error.dhl"/>
+  
+   <import namespace="http://utility.dhl"/>
+   <import namespace="http://common.service.dhl"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_xsd_string">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+    <complexType name="ArrayOf_tns1_FeeInfo">
+        <complexContent>
+         <restriction base="soapenc:Array">
+          <attribute ref="soapenc:arrayType" wsdl:arrayType="tns4:FeeInfo[]"/>
+         </restriction>
+        </complexContent>
+   </complexType>
+  
+   <complexType name="ArrayOf_tns1_ProductFeeInfo">
+        <complexContent>
+         <restriction base="soapenc:Array">
+          <attribute ref="soapenc:arrayType" wsdl:arrayType="tns4:ProductFeeInfo[]"/>
+         </restriction>
+        </complexContent>
+   </complexType>
+  </schema>
+   
+ </wsdl:types>
+
+   
+    <!-- WSDL Definitions for Input Parameters, Output Parameters and Exceptions -->
+
+    <wsdl:message name="getLandedCostEstimateRequest">
+   
+         <wsdl:part name="objLandedCostInput" type="tns4:LandedCostInput"/>
+         <wsdl:part name="referenceID" type="xsd:string"/>
+    </wsdl:message>
+    
+    <wsdl:message name="getLandedCostEstimateMultipleCommoditiesRequest">
+         <wsdl:part name="objLandedCostInput" type="tns4:LandedCostMultipleCommoditiesInput"/>
+         <wsdl:part name="referenceID" type="xsd:string"/>
+   </wsdl:message>
+
+   
+   <wsdl:message name="FactsServiceException">
+
+      <wsdl:part name="fault" type="tns4:FactsServiceException"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLandedCostEstimateResponse">
+
+      <wsdl:part name="objLandedCostResponse" type="tns4:LandedCostResponseObject"/>
+
+   </wsdl:message>
+
+   
+   <wsdl:message name="getLandedCostEstimateMultipleCommoditiesResponse">
+      <wsdl:part name="objLandedCostResponse" type="tns4:LandedCostMultipleCommoditiesResponseObject"/>
+   </wsdl:message>
+
+   <wsdl:portType name="LandedCost">
+
+      <wsdl:operation name="getLandedCostEstimate" parameterOrder="objLandedCostInput referenceID">
+
+         <wsdl:input message="impl:getLandedCostEstimateRequest" name="getLandedCostEstimateRequest"/>
+
+         <wsdl:output message="impl:getLandedCostEstimateResponse" name="getLandedCostEstimateResponse"/>
+
+         <wsdl:fault message="impl:FactsServiceException" name="FactsServiceException"/>
+      </wsdl:operation>
+      <wsdl:operation name="getLandedCostEstimateForMultipleCommodities" parameterOrder="objLandedCostInput referenceID">
+         <wsdl:input message="impl:getLandedCostEstimateMultipleCommoditiesRequest" name="getLandedCostEstimateMultipleCommoditiesRequest"/>
+         <wsdl:output message="impl:getLandedCostEstimateMultipleCommoditiesResponse" name="getLandedCostEstimateMultipleCommoditiesResponse"/>
+         <wsdl:fault message="impl:FactsServiceException" name="FactsServiceException"/>
+      </wsdl:operation>
+
+       
+   </wsdl:portType>
+
+   <wsdl:binding name="LandedCostSoapBinding" type="impl:LandedCost">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getLandedCostEstimate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getLandedCostEstimateRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:LandedCost" use="encoded"/>
+            
+          </wsdl:input>
+
+         <wsdl:output name="getLandedCostEstimateResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:LandedCost" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="FactsServiceException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="FactsServiceException" namespace="urn:LandedCost" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+      <wsdl:operation name="getLandedCostEstimateForMultipleCommodities">
+         <wsdlsoap:operation soapAction=""/>
+         <wsdl:input name="getLandedCostEstimateMultipleCommoditiesRequest">
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:LandedCost" use="encoded"/>
+         </wsdl:input>
+         <wsdl:output name="getLandedCostEstimateMultipleCommoditiesResponse">
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:LandedCost" use="encoded"/>
+         </wsdl:output>
+         <wsdl:fault name="FactsServiceException">
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="FactsServiceException" namespace="urn:LandedCost" use="encoded"/>
+         </wsdl:fault>
+      </wsdl:operation>
+   </wsdl:binding>
+   
+   <!-- WSDL Definitions for Server url -->
+
+   <wsdl:service name="LandedCostService">
+
+      <wsdl:port binding="impl:LandedCostSoapBinding" name="LandedCost">
+
+         <wsdlsoap:address location="http://tasapi.dhl.com/facts/servlet/rpcrouter"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
